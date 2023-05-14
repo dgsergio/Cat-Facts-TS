@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
 import useFetch from './hooks/useFetch';
+import Main from './components/Main';
 
 function App() {
-  const { sendReq } = useFetch();
+  const { sendReq, loading, error } = useFetch();
   const [catFact, setCatFact] = useState({ fact: '' });
   const [giphyImg, setGiphyImg] = useState({ url: '', title: '' });
 
@@ -39,12 +40,11 @@ function App() {
   return (
     <>
       <h1>Cats Facts</h1>
-      <main>
-        <section>
-          <img src={giphyImg.url} alt={giphyImg.title} />
-          <p>{catFact.fact}</p>
-        </section>
-      </main>
+      {loading && <div className="message">Loading...</div>}
+      {error && <div className="message error">{error}</div>}
+      {!error && !loading && (
+        <Main url={giphyImg.url} title={giphyImg.title} fact={catFact.fact} />
+      )}
     </>
   );
 }

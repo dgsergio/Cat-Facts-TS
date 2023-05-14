@@ -11,9 +11,10 @@ export default function useFetch() {
       const response = await fetch(url);
       if (!response.ok) throw new Error('Could not fetch.');
       const respData = await response.json();
+      setLoading(false);
       return respData;
     } catch (err) {
-      setError('Somthing went wrong: ' + err);
+      setError('Something went wrong: ' + err);
     }
     setLoading(false);
   };

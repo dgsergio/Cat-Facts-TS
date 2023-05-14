@@ -27,3 +27,15 @@ section img {
   max-width: 300px;
   max-height: 300px;
 }
+
+.message {
+  text-align: center;
+  font-family: sans-serif;
+  font-size: 20px;
+  padding: 20px;
+}
+
+.error {
+  background-color: rgb(255, 210, 210);
+  color: red;
+}
